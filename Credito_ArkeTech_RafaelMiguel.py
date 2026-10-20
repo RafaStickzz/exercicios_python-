@@ -1,7 +1,7 @@
 """
-Atividade Prática: Árvore de Decisão de Crédito (Caso ArkeTech)
-Dupla: [Rafael Evaristo e Miguel Augusto]
- Copiloto: Gemini
+ Atividade Prática: Árvore de Decisão de Crédito (Caso ArkeTech)
+ Dupla: [Rafael Evaristo e Miguel Augusto]
+ Copiloto: Gemini 
 """
  
 def auditoria_credito():
