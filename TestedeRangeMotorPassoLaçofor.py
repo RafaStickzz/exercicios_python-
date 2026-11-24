@@ -1,4 +1,4 @@
 print ("Iniciando contagem regressiva do servidor...")
-for i in range(10, 0, -1):
-    print(i)
+for numero in range(10, 0, -1):
+    print(numero)
 print ("Servidor  Reniciado!")
