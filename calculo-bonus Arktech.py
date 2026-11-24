@@ -1,43 +1,54 @@
-# ====================================================
+# ==================================================
 # MÓDULOS DE PROCESSAMENTO (def)
-# ====================================================
+# ==================================================
 def calcular_bonus(salario):
     """Calcula o bônus padrão de 15% da ArkTech"""
     return salario * 0.15
 
-# ====================================================
+
+# ==================================================
 # INTERFACE DO SISTEMA
-# ====================================================
-print("===================================================")
-print("          RH ARKTECH - BÔNUS INICIAL               ")
-print("===================================================")
+# ==================================================
+print("=" * 50)
+print("           RH ARKTECH - BÔNUS INICIAL")
+print("=" * 50)
 
 while True:
     print("\n--- NOVO REGISTRO ---")
 
-    # O .strip() remove espaços em branco digitados sem querer
-    nome = input("Nome completo (ou digite "0" para sair): ").strip()"
+    nome = input("Nome completo (ou digite 0 para sair): ").strip()
 
-if nome == "0":
-    print("\n   Encerrando o painel de bônus. Bom trabalho!")
-    break
+    if nome == "0":
+        print("\nEncerrando o painel de bônus. Bom trabalho!")
+        break
 
-# Blindagem 1: Impede que o nome fique em branco se o usuario só apertar "Enter"
-if not nome:
-    print(" ERRO: O campo de nome não pode ficar vazio.")
-    continue
-
-cargo = input("Cargo contratado: ").strip()
-
-# Blindagem 2: A Zona de Perigo (Tratamento de Exceções)
-try:
-    salario = float(input("Salario Base (use ponto. Ex: 1500.00): R$ "))
-
-    # Blindagem 3: Regra de Negocio (Não existe salario negativo ou zero)
-    if salario <= 0:
-        print("\n  ERRO LOGISTICO: O salario deve ser maior que zero.")
-        print("Registro cancelado. Tente novamente.")
+    if not nome:
+        print("ERRO: O campo de nome não pode ficar vazio.")
         continue
 
-except ValueError:
-    print("\n  ERRO DE SINTAXE: Digite apenas ")
+    cargo = input("Cargo contratado: ").strip()
+    if not cargo:
+        print("ERRO: O campo de cargo não pode ficar vazio.")
+        continue
+
+    try:
+        salario = float(input("Salario Base (use ponto. Ex: 1500.00): R$ "))
+
+        if salario <= 0:
+            print("\nERRO LOGISTICO: O salario deve ser maior que zero.")
+            print("Registro cancelado. Tente novamente.")
+            continue
+
+    except ValueError:
+        print("\nERRO DE SINTAXE: Digite apenas números válidos (ex: 1500.00).")
+        continue
+
+    bonus = calcular_bonus(salario)
+    total = salario + bonus
+
+    print("\n--- RESUMO DO REGISTRO ---")
+    print(f"Nome: {nome.title()}")
+    print(f"Cargo: {cargo.title()}")
+    print(f"Salário Base: R$ {salario:.2f}")
+    print(f"Bônus (15%): R$ {bonus:.2f}")
+    print(f"Total a receber: R$ {total:.2f}")
